@@ -30,3 +30,7 @@ Route::view('/contact','contact')->name('contact');
 // Route::resource('projects', 'App\Http\Controllers\PortfolioController')->only(['index','show']);
 
 // Route::apiResource('projects', 'App\Http\Controllers\PortfolioController');
+
+
+//* Se crea para el formulario una ruta con POST
+Route::post('contact','App\Http\Controllers\MessagesController@store')->name('contact');
