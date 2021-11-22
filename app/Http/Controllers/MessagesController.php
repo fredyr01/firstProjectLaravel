@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 class MessagesController extends Controller
 {
     public function store(){
-        request()->validate([
+        $message = request()->validate([
             'name' => 'required',
             // 'email' => 'required|email'
             //* o se puede pasar un array con las condiciones
@@ -20,9 +20,10 @@ class MessagesController extends Controller
             'name.required' => 'Necesito tu nombre'
         ]);
 
-        Mail::to('fredyrios01@gmail.com')->send(new MessageReceived);
+        Mail::to('fredyrios01@gmail.com')->queue(new MessageReceived($message));
+
+        // return new MessageReceived($message);
+
         return 'Mensaje enviado';
-
-
     }
 }
