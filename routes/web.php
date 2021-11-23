@@ -17,15 +17,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','home')->name('home');
 
-Route::view('/about','about')->name('about');
+Route::view('/quienes-somos','about')->name('about');
 
 // Route::view('/portfolio','portfolio', compact('portfolio'))->name('portfolio');
 
 // Route::get('/portfolio', 'App\Http\Controllers\PortfolioController')->name('portafolio');
 
-Route::get('/portfolio', 'App\Http\Controllers\PortfolioController@index')->name('portfolio');
+Route::get('/portafolio', 'App\Http\Controllers\ProjectController@index')->name('projects.index');
 
-Route::view('/contact','contact')->name('contact');
+Route::get('/portafolio/{id}', 'App\Http\Controllers\ProjectController@show')->name('projects.show');
+
+Route::view('/contacto','contact')->name('contact');
 
 // Route::resource('projects', 'App\Http\Controllers\PortfolioController')->only(['index','show']);
 
@@ -33,4 +35,4 @@ Route::view('/contact','contact')->name('contact');
 
 
 //* Se crea para el formulario una ruta con POST
-Route::post('contact','App\Http\Controllers\MessagesController@store')->name('contact');
+Route::post('contact','App\Http\Controllers\MessageController@store')->name('messages.store');
