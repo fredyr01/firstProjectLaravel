@@ -23,13 +23,28 @@ Route::view('/quienes-somos','about')->name('about');
 
 // Route::get('/portfolio', 'App\Http\Controllers\PortfolioController')->name('portafolio');
 
-Route::get('/portafolio', 'App\Http\Controllers\ProjectController@index')->name('projects.index');
+// Route::get('/portafolio', 'App\Http\Controllers\ProjectController@index')->name('projects.index');
 
-Route::get('/portafolio/crear', 'App\Http\Controllers\ProjectController@create')->name('projects.create');
+// Route::get('/portafolio/crear', 'App\Http\Controllers\ProjectController@create')->name('projects.create');
 
-Route::post('/portafolio', 'App\Http\Controllers\ProjectController@store')->name('projects.store');
+// Route::get('/portafolio/{project}/editar', 'App\Http\Controllers\ProjectController@edit')->name('projects.edit');
 
-Route::get('/portafolio/{project}', 'App\Http\Controllers\ProjectController@show')->name('projects.show');
+// Route::patch('/portafolio/{project}', 'App\Http\Controllers\ProjectController@update')->name('projects.update');
+
+// Route::post('/portafolio', 'App\Http\Controllers\ProjectController@store')->name('projects.store');
+
+// Route::get('/portafolio/{project}', 'App\Http\Controllers\ProjectController@show')->name('projects.show');
+
+// Route::delete('/portafolio/{project}', 'App\Http\Controllers\ProjectController@destroy')->name('projects.destroy');
+
+//* Agrupando las rutas de project
+//* Recibe el nombre del recurso: projects
+//* Recibe el nombre del controlador encargado: ProjectController
+
+Route::resource('portafolio','App\Http\Controllers\ProjectController')
+    ->names('projects')
+    ->parameters(['portafolio' => 'project']);
+
 
 Route::view('/contacto','contact')->name('contact');
 

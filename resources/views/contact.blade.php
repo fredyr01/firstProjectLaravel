@@ -23,6 +23,10 @@
 
     {{-- @endif --}}
 
+    @if (session('status'))
+        {{session('status')}}
+    @else
+
     <form method="POST" action="{{ route('messages.store') }}">
         @csrf
         <input name="name" placeholder="Nombre ... " value="{{ old('name') }}"><br>
@@ -35,4 +39,6 @@
         {!! $errors->first('content','<small>:message</small><br>') !!} <br>
         <button>@lang('Send')</button>
     </form>
+
+    @endif
 @endsection
