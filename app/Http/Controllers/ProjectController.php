@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
+    public function __construct()
+    {
+        //* Only es para que solo se apliquen a estas funciones que se pasan
+        // $this->middleware('auth')->only('create', 'edit');
+        //* Si son muchas funciones es mejor usar except y se especifica
+        //* a la que no se usará middlware
+        $this->middleware('auth')->except('index', 'show');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +52,7 @@ class ProjectController extends Controller
 
         Project::create($request->validated()); // title, url, description
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'El proyecto fue creado con éxito!');
     }
 
     public function edit(Project $project){
@@ -54,11 +64,11 @@ class ProjectController extends Controller
     public function update(Project $project, SaveProjectRequest $request){
         $project->update($request->validated());
 
-        return redirect()->route('projects.show', $project);
+        return redirect()->route('projects.show', $project)->with('status', 'El proyecto fue actualizado con éxito!');
     }
 
     public function destroy(Project $project){
         $project->delete();
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'El proyecto fue eliminado con éxito!');
     }
 }

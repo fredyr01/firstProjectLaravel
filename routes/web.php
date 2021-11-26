@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,9 @@ Route::view('/contacto','contact')->name('contact');
 
 //* Se crea para el formulario una ruta con POST
 Route::post('contact','App\Http\Controllers\MessageController@store')->name('messages.store');
+
+Auth::routes(['register' => false]);
+
+
+
+

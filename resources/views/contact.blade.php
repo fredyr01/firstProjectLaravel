@@ -23,9 +23,7 @@
 
     {{-- @endif --}}
 
-    @if (session('status'))
-        {{session('status')}}
-    @else
+    @include('partials.session-status')
 
     <form method="POST" action="{{ route('messages.store') }}">
         @csrf
@@ -40,5 +38,4 @@
         <button>@lang('Send')</button>
     </form>
 
-    @endif
 @endsection
