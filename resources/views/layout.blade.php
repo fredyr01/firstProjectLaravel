@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title', 'Valor por defecto')</title>
-    <link rel="stylesheet" href="/css/app.css">
-    <script src="/js/app.js" defer></script>
+    <link rel="stylesheet" href="{{mix('css/app.css')}}">
+    <script src="{{mix('js/app.js')}}" defer></script>
     <style type="text/css">
-        .active a{
+        /* .active a{
             color: red;
             text-decoration: none;
-        }
+        } */
     </style>
 </head>
 <body>
