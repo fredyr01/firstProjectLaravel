@@ -17,7 +17,10 @@ class MessageController extends Controller
             'subject' => 'required',
             'content' => 'required|min:3'   //* Tenga minimo 3 caracteres
         ],[
-            'name.required' => 'Necesito tu nombre'
+            'name.required' => 'El nombre es obligatorio',
+            'email.required' => 'El email es obligatorio',
+            'subject.required' => 'El asunto es obligatorio',
+            'content.required' => 'El mensaje es obligatorio'
         ]);
 
         Mail::to('fredyrios01@gmail.com')->queue(new MessageReceived($message));

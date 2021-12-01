@@ -3,12 +3,19 @@
 @section('title','Crear proyecto')
 
 @section('content')
-    <h1>Crear nuevo proyecto</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-10 col-lg-6 mx-auto">
 
-    @include('partials.validation-errors')
+            @include('partials.validation-errors')
 
-        <form action="{{ route('projects.store') }}" method="POST">
-
-            @include('projects._form',['btnText' => 'Guardar'])
-        </form>
+            <form class="bg-white py-3 px-4 shadow rounded"
+            action="{{ route('projects.store') }}" method="POST">
+                <h1 class="display-5">Nuevo proyecto</h1>
+                <hr>
+                @include('projects._form',['btnText' => 'Guardar'])
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

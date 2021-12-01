@@ -16,12 +16,20 @@
     </style>
 </head>
 <body>
-    <div id="app">
-        @include('partials/nav')
+    <div id="app" class="d-flex flex-column h-screen justify-content-between">
+        <header>
+            @include('partials/nav')
 
-        @include('partials.session-status')
+            @include('partials.session-status')
+        </header>
 
-        @yield('content')
+        <main class="py-4">
+            @yield('content')
+        </main>
+        
+        <footer class="bg-white text-center text-black-50 py-3 shadow">
+            {{config('app.name')}} | Copyright @ {{date('Y')}}
+        </footer>
     </div>
 </body>
 </html>
